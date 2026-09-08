@@ -5,7 +5,7 @@
 [![Prometheus](https://img.shields.io/badge/Prometheus-2.50+-E6522C?logo=prometheus&logoColor=white)](https://prometheus.io/)
 [![Grafana](https://img.shields.io/badge/Grafana-10.0+-F46800?logo=grafana&logoColor=white)](https://grafana.com/)
 
-> **A hands-on, production-style monitoring lab built from scratch for infrastructure observability training and portfolio demonstration.**
+> 
 
 ---
 <p align="left">
@@ -75,7 +75,7 @@ The infrastructure demonstrates competency across multiple critical domains:
 <div align="center">
 
 ### Real-Time Infrastructure Dashboard (Grafana - ID: 1860)
-![Grafana Dashboard](images/grafana-dashboard..png)
+![Grafana Dashboard](images/grafana-dashboard.png)
 
 <br/>
 
