@@ -1,9 +1,6 @@
 # Infrastructure Monitoring Lab with Prometheus & Grafana
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com/)
-[![Prometheus](https://img.shields.io/badge/Prometheus-2.50+-E6522C?logo=prometheus&logoColor=white)](https://prometheus.io/)
-[![Grafana](https://img.shields.io/badge/Grafana-10.0+-F46800?logo=grafana&logoColor=white)](https://grafana.com/)
+
 
 > 
 
