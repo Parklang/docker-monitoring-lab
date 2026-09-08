@@ -1,45 +1,64 @@
-# docker-monitoring-lab
-# Virtualization System Support Lab
+# Infrastructure Monitoring Lab with Prometheus & Grafana
 
-**Author:** System Support Intern
-**Date:** October 2023
-**Status:** Work in Progress (Learning Phase)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com/)
+[![Prometheus](https://img.shields.io/badge/Prometheus-2.50+-E6522C?logo=prometheus&logoColor=white)](https://prometheus.io/)
+[![Grafana](https://img.shields.io/badge/Grafana-10.0+-F46800?logo=grafana&logoColor=white)](https://grafana.com/)
 
-## 1. Introduction & Objectives
+> **A hands-on, production-style monitoring lab built from scratch for infrastructure observability training and portfolio demonstration.**
 
-Welcome to my Virtualization Support Lab repository. As a System Support Intern, my primary goal for this project is to bridge the gap between theoretical IT knowledge and practical, hands-on server management.
+---
 
-This lab serves as a safe sandbox environment where I can practice and document the core responsibilities of a System Administrator. The main objectives are:
+## 📌 Overview
 
-- **Virtualization Proficiency:** Gain hands-on experience managing hypervisors (Oracle VirtualBox) and understanding how virtual resources (CPU, RAM, storage) are allocated.
-- **OS Installation & Configuration:** Practice the installation and initial configuration of both Linux (Ubuntu Server) and Windows (Windows Server) environments from scratch. This includes partitioning, setting hostnames, and configuring user accounts.
-- **System Monitoring:** Learn how to monitor system performance, resource usage, and service health using command-line tools and basic dashboards.
-- **Documentation:** Develop a habit of documenting every step, error, and resolution—a crucial skill for any support role.
+This project represents a complete, self-contained monitoring laboratory designed to simulate a real-world production environment. As an aspiring DevOps/System Operations professional, I built this lab to bridge the gap between theoretical knowledge and practical implementation of modern observability stacks.
 
-## 2. System Architecture
+The infrastructure demonstrates competency across multiple critical domains:
 
-The lab is designed to run on a standard corporate laptop, utilizing a Type-2 hypervisor. This setup allows me to run multiple "server" environments without needing dedicated physical hardware.
+- **Virtualization**: Orchestration of guest VMs using Oracle VirtualBox on a Windows host
+- **Linux System Administration**: Headless Ubuntu Server 22.04 LTS management via SSH
+- **Container Orchestration**: Docker Compose for multi-service application deployment
+- **Monitoring & Observability**: End-to-end metrics collection, storage, and visualization pipeline
+- **Networking**: Port forwarding, service exposure, and IPv4/IPv6 troubleshooting
+
+---
+
+## 🏗️ Architecture Overview
 
 ```text
-+-----------------------------------------------------+
-|         Physical Host (Windows Laptop)               |
-|         OS: Windows 10/11 Pro                        |
-|         RAM: 16GB+ Recommended                       |
-|                                                      |
-|         +---------------------------------------+   |
-|         |   Hypervisor: Oracle VirtualBox        |   |
-|         |                                        |   |
-|         |   +----------+   +-----------------+  |   |
-|         |   |          |   |                 |  |   |
-|         |   |  Ubuntu  |   |   Windows       |  |   |
-|         |   |  Server  |   |   Server        |  |   |
-|         |   |  VM      |   |   VM            |  |   |
-|         |   | (Linux)  |   |  (Windows)      |  |   |
-|         |   +----+-----+   +-------+---------+  |   |
-|         |        |                  |            |   |
-|         +--------|------------------|------------+   |
-|                  |                  |                |
-|                  +-------v----------+                |
-|                          |                           |
-|                 Virtual Network (NAT/Host-Only)      |
-+-----------------------------------------------------+
+                               PHYSICAL HOST (Windows 11)
+                               ┌──────────────────────────────────┐
+                               │  Hardware: Ryzen 7 6800H, 16GB  │
+                               │  Terminal: PowerShell / SSH     │
+                               │                                  │
+                               │  ┌────────────────────────────┐ │
+                               │  │    Oracle VM VirtualBox    │ │
+                               │  │                            │ │
+                               │  │  ┌──────────────────────┐ │ │
+                               │  │  │   Ubuntu 22.04 VM    │ │ │
+                               │  │  │  2 vCPUs | 4GB RAM  │ │ │
+                               │  │  │  25GB Disk          │ │ │
+                               │  │  │                      │ │ │
+                               │  │  │  ┌───────────────┐  │ │ │
+                               │  │  │  │ Docker Engine │  │ │ │
+                               │  │  │  │  & Compose    │  │ │ │
+                               │  │  │  └───────┬───────┘  │ │ │
+                               │  │  │          │          │ │ │
+                               │  │  │  ┌───────▼───────┐  │ │ │
+                               │  │  │  │  Node       │  │ │ │
+                               │  │  │  │  Exporter   │  │ │ │
+                               │  │  │  │  :9100      │  │ │ │
+                               │  │  │  └───────┬───────┘  │ │ │
+                               │  │  │          │          │ │ │
+                               │  │  │  ┌───────▼───────┐  │ │ │
+                               │  │  │  │  Prometheus  │  │ │ │
+                               │  │  │  │  :9090       │──┼─┼─┼─► Host:9090
+                               │  │  │  └───────┬───────┘  │ │ │
+                               │  │  │          │          │ │ │
+                               │  │  │  ┌───────▼───────┐  │ │ │
+                               │  │  │  │   Grafana    │  │ │ │
+                               │  │  │  │   :3000      │──┼─┼─┼─► Host:3000
+                               │  │  │  └───────────────┘  │ │ │
+                               │  │  └──────────────────────┘ │ │
+                               │  └────────────────────────────┘ │
+                               └──────────────────────────────────┘
