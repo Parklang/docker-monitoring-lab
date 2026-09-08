@@ -62,6 +62,7 @@ The infrastructure demonstrates competency across multiple critical domains:
                                │  │  └──────────────────────┘ │ │
                                │  └────────────────────────────┘ │
                                └──────────────────────────────────┘
+```
 ## Screenshots & Verification
 
 ### 1. Prometheus Targets
