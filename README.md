@@ -65,7 +65,7 @@ The infrastructure demonstrates competency across multiple critical domains:
 ## Screenshots & Verification
 
 ### 1. Prometheus Targets
-![Prometheus Targets](prometheus-targets.png.png)
+![Prometheus Targets](docs/images/prometheus-targets.png.png)
 
 ### 2. Grafana System Dashboard
-![Grafana Dashboard](grafana-dashboard.png.png)
+![Grafana Dashboard](docs/images/grafana-dashboard.png.png)
